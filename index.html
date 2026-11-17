@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amadeus Selling Platform Connect - GDS Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app-container">
+        <!-- Top Application Header: Amadeus Selling Platform Connect -->
+        <header id="top-header">
+            <div class="header-left">
+                <div class="brand-logo">
+                    <span class="brand-title">amadeus</span>
+                    <span class="brand-sub">Selling Platform Connect</span>
+                </div>
+                <!-- 6 Isolated Work Area Tabs -->
+                <nav id="work-area-tabs" aria-label="Work Area Sessions">
+                    <button class="area-tab active" data-area="A" id="tab-A" title="Jump to Work Area A (JMA)">[A]</button>
+                    <button class="area-tab" data-area="B" id="tab-B" title="Jump to Work Area B (JMB)">[B]</button>
+                    <button class="area-tab" data-area="C" id="tab-C" title="Jump to Work Area C (JMC)">[C]</button>
+                    <button class="area-tab" data-area="D" id="tab-D" title="Jump to Work Area D (JMD)">[D]</button>
+                    <button class="area-tab" data-area="E" id="tab-E" title="Jump to Work Area E (JME)">[E]</button>
+                    <button class="area-tab" data-area="F" id="tab-F" title="Jump to Work Area F (JMF)">[F]</button>
+                </nav>
+            </div>
+
+            <div class="header-right">
+                <div class="sys-badge" id="office-badge" title="IATA Agency Office ID">
+                    <span class="badge-label">OFFICE:</span>
+                    <span class="badge-value" id="office-id">NYC1A0980</span>
+                </div>
+                <div class="sys-badge" id="user-badge" title="Agent Sign-In Sine">
+                    <span class="badge-label">AGENT:</span>
+                    <span class="badge-value" id="agent-sine">1234AA/AS</span>
+                </div>
+                <div class="sys-badge clock-badge" id="clock-badge">
+                    <span class="badge-label">GMT:</span>
+                    <span class="badge-value" id="clock-display">--:--:--Z</span>
+                </div>
+                <button id="quick-help-btn" class="header-action-btn" title="Quick Command Help (Alt+H)">HELP</button>
+            </div>
+        </header>
+
+        <!-- Main Workspace: Cryptic Terminal + Interactive Drawer -->
+        <main id="main-content">
+            <div id="terminal-container">
+                <!-- Cryptic Terminal Output Screen -->
+                <div id="output" tabindex="0" role="region" aria-label="Amadeus Cryptic Screen"></div>
+
+                <!-- Real-time Command Syntax Assist Tooltip -->
+                <div id="command-assist-bar" class="assist-bar">
+                    <span class="assist-tag">HINT</span>
+                    <span id="assist-text" class="assist-text">Type a command (e.g., AN20NOVDELBOM, SS1Y1, NM1SMITH/JOHN MR, FXP, TTP)</span>
+                </div>
+
+                <!-- Input Line -->
+                <div id="input-line">
+                    <span id="prompt">A:</span>
+                    <input type="text" id="command-input" autocomplete="off" spellcheck="false" autofocus placeholder="Enter Amadeus cryptic entry...">
+                    <button id="execute-btn" class="send-btn" title="Send Command">↵</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bottom System Status Bar -->
+        <footer id="status-bar">
+            <div class="status-left">
+                <span class="status-item"><strong id="status-area">AREA: A</strong></span>
+                <span class="status-sep">|</span>
+                <span class="status-item" id="status-pnr-box">PNR: <strong id="status-pnr">NO PNR</strong></span>
+                <span class="status-sep">|</span>
+                <span class="status-item" id="status-tst-box">TST: <strong id="status-tst">NO TST</strong></span>
+                <span class="status-sep">|</span>
+                <span class="status-item" id="status-queue-box">QUEUE: <strong id="status-queue">NORMAL</strong></span>
+            </div>
+            <div class="status-right">
+                <span class="status-shortcuts">ALT+1..6 Areas | Up/Down History | ALT+H Help</span>
+                <span class="status-indicator live" title="Connected to GDS Engine">● IATA CONNECTED</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts in proper dependency order -->
+    <script src="data.js"></script>
+    <script src="cryptic-database.js"></script>
+    <script src="commands.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
